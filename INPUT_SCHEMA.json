@@ -5,7 +5,8 @@
   "schemaVersion": 1,
   "properties": {
     "apifyToken": {
-      "token": "Apify API Token",
+      "title": "Apify API Token",
+      "type": "string",
       "prefill": ""
     },
     "accessKeyId": {
