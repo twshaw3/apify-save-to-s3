@@ -6,6 +6,7 @@
   "properties": {
     "apifyToken": {
       "title": "Apify API Token",
+      "description": "Ener your apify API token if you want to use the taskName macro",
       "type": "string",
       "prefill": ""
     },
