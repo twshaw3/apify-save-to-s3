@@ -17,7 +17,7 @@ function getProperty(propertyName, object) {
   return property;
 }
 
-function formatKey(input) {
+async function formatKey(input) {
   log.debug(`save-to-s3: parsing format string: ${input.objectKeyFormat}`);
   let result =
     // eslint-disable-next-line no-template-curly-in-string
@@ -33,7 +33,7 @@ function formatKey(input) {
       log.debug(`save-to-s3: getting property ${inputProp}`);
       let value;
 			if (inputProp == "taskName") {
-				value = getTaskName(getProperty("actorTaskId", input), input.apifyToken);
+				value = await getTaskName(getProperty("actorTaskId", input), input.apifyToken);
 			} else {
 				value = getProperty(inputProp, input);
 			}
