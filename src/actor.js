@@ -31,12 +31,23 @@ function formatKey(input) {
       if (!tag || tag.length < 3) break; // Fail silently
       const inputProp = tag.substr(2, tag.length - 3);
       log.debug(`save-to-s3: getting property ${inputProp}`);
-      const value = getProperty(inputProp, input);
+      let value;
+			if (inputProp == "taskName") {
+				value = getTaskName(getProperty("actorTaskId", input), input.apifyToken);
+			} else {
+				value = getProperty(inputProp, input);
+			}
       log.debug(`save-to-s3: got property value ${value}`);
       result = result.replace(tag, value);
     }
   }
   return result;
+}
+
+async function getTaskName(taskId, apifyToken) {
+	const url = `https://api.apify.com/v2/actor-tasks/${taskId}?token=${apifyToken}`;
+	let response = await axios.get(url);
+	return response.data.data.name;
 }
 
 Apify.main(async () => {

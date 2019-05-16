@@ -4,6 +4,10 @@
   "description": "Use the following form to configure Save to S3:",
   "schemaVersion": 1,
   "properties": {
+    "apifyToken": {
+      "token": "Apify API Token",
+      "prefill": ""
+    },
     "accessKeyId": {
       "title": "AWS Key ID",
       "type": "string",
