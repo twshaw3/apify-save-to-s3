@@ -46,6 +46,7 @@ async function formatKey(input) {
 
 async function getTaskName(taskId, apifyToken) {
 	const url = `https://api.apify.com/v2/actor-tasks/${taskId}?token=${apifyToken}`;
+	log.debug(`getting task url ${url}`);
 	let response = await axios.get(url);
 	return response.data.data.name;
 }
