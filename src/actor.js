@@ -100,7 +100,7 @@ Apify.main(async () => {
   log.debug(`save-to-s3: ${fileContents.length}`);
 
   // Save to S3
-  const key = formatKey(input);
+  const key = await formatKey(input);
   log.debug(`save-to-s3: object key ${key}`);
   const s3 = new S3({
     apiVersion: '2006-03-01',
