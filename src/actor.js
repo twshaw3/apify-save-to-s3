@@ -33,7 +33,7 @@ async function formatKey(input) {
       log.debug(`save-to-s3: getting property ${inputProp}`);
       let value;
 			if (inputProp == "taskName") {
-				value = await getTaskName(getProperty("actorTaskId", input), input.apifyToken);
+				value = await getTaskName(getProperty("resource.actorTaskId", input), input.apifyToken);
 			} else {
 				value = getProperty(inputProp, input);
 			}
